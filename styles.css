@@ -1,0 +1,315 @@
+/* =========================================
+   VARIÁVEIS - ESTILO REVISTA DIGITAL DARK
+   ========================================= */
+:root {
+  --bg-color: #0f0f0f; /* Fundo sólido quase preto, estilo revista */
+  --card-bg: #1a1a1a; /* Fundo dos artigos */
+  --card-border: #333333; /* Linhas de separação */
+  --text-main: #e0e0e0; /* Cinza claro para leitura confortável */
+  --text-muted: #999999;
+  --accent-color: #d90429; /* Vermelho clássico editorial (remete ao Biotônico) */
+  --font-serif: "Georgia", "Times New Roman", serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* RESET */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+/* =========================================
+   CLASSES REUTILIZADAS DA AV1 (MODO EDITORIAL)
+   ========================================= */
+
+.sc_rafael_tema_civil {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  min-height: 100vh;
+  line-height: 1.7;
+}
+
+.sc_rafael_container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 20px 60px;
+}
+
+/* Bento Grid agora funciona como diagramação de jornal */
+.sc_rafael_grid_cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(180px, auto);
+  gap: 30px; /* Mais respiro entre as colunas */
+}
+
+/* O Card agora é um "Artigo/Coluna" */
+.sc_rafael_card {
+  background: var(--card-bg);
+  border-top: 4px solid var(--card-border); /* Linha grossa no topo, clássico de jornal */
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: border-color 0.3s ease;
+}
+
+/* Efeito sutil ao passar o mouse */
+.sc_rafael_card:hover {
+  border-top-color: var(--accent-color);
+}
+
+/* Títulos Serifados (Estilo Jornal) */
+.sc_rafael_card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: #ffffff;
+  font-weight: normal;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  line-height: 1.3;
+}
+
+.sc_rafael_card p {
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.sc_rafael_card strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Imagens ajustadas para o layout editorial */
+.sc_rafael_img_estilo {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  margin: 10px 0;
+  filter: grayscale(
+    20%
+  ); /* Tira um pouco da saturação para dar um ar documental */
+  transition: filter 0.3s ease;
+}
+
+.sc_rafael_img_estilo:hover {
+  filter: grayscale(0%);
+}
+
+.sc_rafael_img_estilo.tall {
+  min-height: 300px;
+}
+
+/* Botão em estilo Editorial */
+.sc_rafael_btn {
+  margin-top: auto;
+  padding: 10px 15px;
+  background: transparent;
+  color: var(--text-main);
+  border: 1px solid var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sc_rafael_btn:hover {
+  background: var(--text-main);
+  color: var(--bg-color);
+  border-color: var(--text-main);
+}
+
+/* =========================================
+   ESTILOS ESPECÍFICOS DE REVISTA
+   ========================================= */
+
+/* Masthead (Cabeçalho do Jornal) */
+.modern-header {
+  text-align: center;
+  padding: 50px 20px 30px;
+  border-bottom: 2px solid var(--card-border);
+  margin-bottom: 40px;
+}
+
+.edition-date {
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: var(--accent-color);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+.modern-header h1 {
+  font-family: var(--font-serif);
+  font-size: 4.5rem;
+  font-weight: normal;
+  letter-spacing: -2px;
+  color: #ffffff;
+  line-height: 1;
+  margin-bottom: 15px;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.header-divider {
+  width: 100px;
+  height: 2px;
+  background-color: var(--accent-color);
+  margin: 20px auto;
+}
+
+.author {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+
+/* Etiquetas (Editorias/Categorias) */
+.tag {
+  align-self: flex-start;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--accent-color);
+  letter-spacing: 1px;
+  border-bottom: 2px solid var(--accent-color); /* Linha embaixo da categoria */
+  padding-bottom: 3px;
+  margin-bottom: 10px;
+}
+
+/* Drop Cap (Letra Capital) */
+.drop-cap {
+  float: left;
+  font-family: var(--font-serif);
+  font-size: 4.5rem;
+  line-height: 0.8;
+  padding-top: 4px;
+  padding-right: 8px;
+  color: #ffffff;
+}
+
+/* Ajuste específico para o poema */
+.editorial-poem p {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-style: italic;
+}
+
+.author-quote {
+  text-align: right;
+  font-family: var(--font-sans);
+  font-weight: bold;
+  color: var(--accent-color);
+  margin-top: 15px;
+}
+
+/* Lista de Infográfico (Pesos e Medidas) */
+.card-infografico .modern-list {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0;
+  border-top: 1px solid var(--card-border);
+}
+
+.card-infografico li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--card-border);
+  font-family: monospace;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.card-infografico li span:first-child {
+  color: #ffffff;
+}
+
+/* Bloco de Citações (Quotes) */
+.bento-quotes {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  background-color: transparent;
+  border-top: 4px solid var(--accent-color); /* Destaque em vermelho para as citações */
+}
+
+.quote-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.quote-box p {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-style: italic;
+  color: #ffffff;
+  line-height: 1.5;
+}
+
+.quote-author {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: var(--accent-color);
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+/* Rodapé */
+.footer-container {
+  border-top: 1px solid var(--card-border);
+  text-align: center;
+  padding: 40px 20px;
+  font-family: monospace;
+  color: var(--text-muted);
+}
+
+/* Modificadores do Grid para telas grandes */
+@media (min-width: 901px) {
+  .bento-large {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  .bento-tall {
+    grid-row: span 2;
+  }
+  .bento-wide {
+    grid-column: span 2;
+  }
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+  .sc_rafael_grid_cards {
+    grid-template-columns: 1fr;
+  }
+  .bento-quotes {
+    flex-direction: column;
+  }
+  .modern-header h1 {
+    font-size: 3rem;
+  }
+}

@@ -1,70 +1,91 @@
 /* =========================================
    VARIÁVEIS - ESTILO REVISTA DIGITAL DARK
+   Isso permite mudar as cores do site inteiro mudando apenas estas linhas.
    ========================================= */
 :root {
-  --bg-color: #0f0f0f; /* Fundo sólido quase preto, estilo revista */
-  --card-bg: #1a1a1a; /* Fundo dos artigos */
-  --card-border: #333333; /* Linhas de separação */
-  --text-main: #e0e0e0; /* Cinza claro para leitura confortável */
-  --text-muted: #999999;
-  --accent-color: #d90429; /* Vermelho clássico editorial (remete ao Biotônico) */
+  --bg-color: #0f0f0f; /* Cor do fundo da página (quase preto) */
+  --card-bg: #1a1a1a; /* Cor de fundo dos cards (cinza muito escuro) */
+  --card-border: #333333; /* Cor das bordas e linhas separadoras */
+  --text-main: #e0e0e0; /* Cor do texto principal (um cinza claro que cansa menos a vista que o branco puro) */
+  --text-muted: #999999; /* Cor de textos secundários, legendas e tags */
+  --accent-color: #d90429; /* Cor de destaque (Vermelho clássico remetendo à marca original) */
+
+  /* Fontes: Serifada para títulos (elegante) e Sans-serif para textos (fácil leitura) */
   --font-serif: "Georgia", "Times New Roman", serif;
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* RESET */
+/* =========================================
+   RESET GERAL
+   Remove margens e preenchimentos padrão do navegador para evitar inconsistências.
+   ========================================= */
 * {
-  box-sizing: border-box;
+  box-sizing: border-box; /* Garante que padding e border não aumentem o tamanho total das caixas */
   margin: 0;
   padding: 0;
 }
 
+/* Define a fonte padrão de todo o site */
 body {
   font-family: var(--font-sans);
 }
 
 /* =========================================
-   CLASSES REUTILIZADAS DA AV1 (MODO EDITORIAL)
+   ESTRUTURAS PRINCIPAIS (Reaproveitadas da AV1)
    ========================================= */
 
+/* Classe aplicada ao body, gerencia o tema principal */
 .sc_rafael_tema_civil {
   background-color: var(--bg-color);
   color: var(--text-main);
-  min-height: 100vh;
-  line-height: 1.7;
+  min-height: 100vh; /* Garante que ocupe no mínimo a altura total da tela */
+  line-height: 1.7; /* Espaçamento confortável entre as linhas de texto */
 }
 
+/* Define a largura máxima do site e centraliza na tela */
 .sc_rafael_container {
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px 20px 60px;
+  margin: 0 auto; /* Centraliza horizontalmente */
+  padding: 20px 20px 60px; /* Espaçamentos internos: topo, lados, baixo */
 }
 
-/* Bento Grid agora funciona como diagramação de jornal */
+/* =========================================
+   SISTEMA DE GRID (Layout Bento Box / Diagramação de Jornal)
+   ========================================= */
 .sc_rafael_grid_cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: minmax(180px, auto);
-  gap: 30px; /* Mais respiro entre as colunas */
+  display: grid; /* Ativa o modo CSS Grid */
+  grid-template-columns: repeat(
+    4,
+    1fr
+  ); /* Cria 4 colunas de larguras exatamente iguais */
+  grid-auto-rows: minmax(
+    180px,
+    auto
+  ); /* Altura mínima de cada linha é 180px, crescendo se tiver mais texto */
+  gap: 30px; /* Espaço (calha) entre os cards */
 }
 
-/* O Card agora é um "Artigo/Coluna" */
+/* Visual do Card Individual (Artigo) */
 .sc_rafael_card {
   background: var(--card-bg);
-  border-top: 4px solid var(--card-border); /* Linha grossa no topo, clássico de jornal */
+  border-top: 4px solid var(--card-border); /* Linha grossa no topo para estética de jornal */
   padding: 24px 20px;
+
+  /* Usa flexbox interno para espaçar os elementos de texto e imagem perfeitamente */
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  /* Animação suave para quando a borda mudar de cor no hover */
   transition: border-color 0.3s ease;
 }
 
-/* Efeito sutil ao passar o mouse */
+/* Muda a cor da borda do topo para vermelho quando o mouse passa por cima */
 .sc_rafael_card:hover {
   border-top-color: var(--accent-color);
 }
 
-/* Títulos Serifados (Estilo Jornal) */
+/* Títulos dentro dos cards */
 .sc_rafael_card h3 {
   font-family: var(--font-serif);
   font-size: 1.5rem;
@@ -76,41 +97,49 @@ body {
   line-height: 1.3;
 }
 
+/* Parágrafos dentro dos cards */
 .sc_rafael_card p {
   font-size: 1rem;
   color: var(--text-muted);
 }
 
+/* Texto em negrito (<strong>) dentro dos cards */
 .sc_rafael_card strong {
   color: #ffffff;
   font-weight: 600;
 }
 
-/* Imagens ajustadas para o layout editorial */
+/* =========================================
+   ESTILIZAÇÃO DE IMAGENS
+   ========================================= */
 .sc_rafael_img_estilo {
-  width: 100%;
+  width: 100%; /* Imagem sempre ocupa 100% da largura do seu container */
   height: auto;
-  object-fit: cover;
+  object-fit: cover; /* Faz a imagem preencher o espaço como um papel de parede, sem distorcer */
   object-position: center;
   display: block;
   margin: 10px 0;
-  filter: grayscale(
-    20%
-  ); /* Tira um pouco da saturação para dar um ar documental */
-  transition: filter 0.3s ease;
+
+  /* Aplica 20% de filtro preto e branco para dar um ar documental/antigo */
+  filter: grayscale(20%);
+  transition: filter 0.3s ease; /* Transição suave para o efeito abaixo */
 }
 
+/* Tira o filtro preto e branco quando o mouse passa por cima (fica colorida) */
 .sc_rafael_img_estilo:hover {
   filter: grayscale(0%);
 }
 
+/* Modificador de altura para imagens que precisam ser maiores */
 .sc_rafael_img_estilo.tall {
   min-height: 300px;
 }
 
-/* Botão em estilo Editorial */
+/* =========================================
+   BOTÕES E ELEMENTOS INTERATIVOS
+   ========================================= */
 .sc_rafael_btn {
-  margin-top: auto;
+  margin-top: auto; /* Empurra o botão para a parte mais baixa possível do card */
   padding: 10px 15px;
   background: transparent;
   color: var(--text-main);
@@ -119,10 +148,11 @@ body {
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  cursor: pointer;
+  cursor: pointer; /* Muda a setinha do mouse para a 'mãozinha' */
   transition: all 0.2s ease;
 }
 
+/* Efeito Hover do Botão: Inverte as cores */
 .sc_rafael_btn:hover {
   background: var(--text-main);
   color: var(--bg-color);
@@ -130,10 +160,10 @@ body {
 }
 
 /* =========================================
-   ESTILOS ESPECÍFICOS DE REVISTA
+   ESTILOS ESPECÍFICOS DE REVISTA (HEADER, TAGS, DROP CAP)
    ========================================= */
 
-/* Masthead (Cabeçalho do Jornal) */
+/* O cabeçalho grandão da revista */
 .modern-header {
   text-align: center;
   padding: 50px 20px 30px;
@@ -141,6 +171,7 @@ body {
   margin-bottom: 40px;
 }
 
+/* Data de edição (Letras miúdas no topo) */
 .edition-date {
   font-family: monospace;
   font-size: 0.8rem;
@@ -150,11 +181,12 @@ body {
   margin-bottom: 15px;
 }
 
+/* O nome gigantesco do Almanaque */
 .modern-header h1 {
   font-family: var(--font-serif);
   font-size: 4.5rem;
   font-weight: normal;
-  letter-spacing: -2px;
+  letter-spacing: -2px; /* Letras levemente mais juntas */
   color: #ffffff;
   line-height: 1;
   margin-bottom: 15px;
@@ -163,12 +195,13 @@ body {
 .subtitle {
   font-size: 1.2rem;
   font-family: var(--font-serif);
-  font-style: italic;
+  font-style: italic; /* Texto em itálico para ar de subtítulo formal */
   color: var(--text-muted);
   max-width: 600px;
   margin: 0 auto;
 }
 
+/* Linha vermelha centralizada no cabeçalho */
 .header-divider {
   width: 100px;
   height: 2px;
@@ -176,30 +209,23 @@ body {
   margin: 20px auto;
 }
 
-.author {
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--text-muted);
-}
-
-/* Etiquetas (Editorias/Categorias) */
+/* Editorias (ex: Bizarro, Stonks, Curiosidade) */
 .tag {
-  align-self: flex-start;
+  align-self: flex-start; /* Impede que a etiqueta ocupe toda a largura */
   font-family: var(--font-sans);
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
   color: var(--accent-color);
   letter-spacing: 1px;
-  border-bottom: 2px solid var(--accent-color); /* Linha embaixo da categoria */
+  border-bottom: 2px solid var(--accent-color); /* Linha sublinhada estilosa */
   padding-bottom: 3px;
   margin-bottom: 10px;
 }
 
-/* Drop Cap (Letra Capital) */
+/* DROP CAP: A primeira letra gigante de um parágrafo */
 .drop-cap {
-  float: left;
+  float: left; /* Faz o texto do parágrafo envolver e contornar a letra */
   font-family: var(--font-serif);
   font-size: 4.5rem;
   line-height: 0.8;
@@ -208,7 +234,7 @@ body {
   color: #ffffff;
 }
 
-/* Ajuste específico para o poema */
+/* Ajustes visuais para o card que contém a poesia */
 .editorial-poem p {
   font-family: var(--font-serif);
   font-size: 1.1rem;
@@ -216,51 +242,57 @@ body {
 }
 
 .author-quote {
-  text-align: right;
+  text-align: right; /* Joga a assinatura para a direita */
   font-family: var(--font-sans);
   font-weight: bold;
   color: var(--accent-color);
   margin-top: 15px;
 }
 
-/* Lista de Infográfico (Pesos e Medidas) */
+/* =========================================
+   INFOGRÁFICO DE LISTAS E CITAÇÕES
+   ========================================= */
+
+/* Estiliza a lista de 'Pesos e Medidas' */
 .card-infografico .modern-list {
-  list-style: none;
+  list-style: none; /* Tira as bolinhas padrão de lista do HTML */
   padding: 0;
   margin: 15px 0;
   border-top: 1px solid var(--card-border);
 }
 
+/* Organiza cada item da lista como uma tabela (nome na esquerda, valor na direita) */
 .card-infografico li {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Empurra um item pra esquerda e outro pra direita */
   padding: 8px 0;
   border-bottom: 1px solid var(--card-border);
-  font-family: monospace;
+  font-family: monospace; /* Fonte tipo máquina de escrever (dados numéricos) */
   font-size: 0.95rem;
   color: var(--text-muted);
 }
 
 .card-infografico li span:first-child {
-  color: #ffffff;
+  color: #ffffff; /* Destaca o nome da medida */
 }
 
-/* Bloco de Citações (Quotes) */
+/* Container que guarda as frases famosas */
 .bento-quotes {
   display: flex;
-  flex-direction: row;
+  flex-direction: row; /* Coloca as duas frases lado a lado */
   gap: 30px;
   background-color: transparent;
-  border-top: 4px solid var(--accent-color); /* Destaque em vermelho para as citações */
+  border-top: 4px solid var(--accent-color); /* Linha vermelha no topo */
 }
 
 .quote-box {
-  flex: 1;
+  flex: 1; /* Faz as duas caixas de citação ocuparem exatamente o mesmo espaço */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
+/* Estilo do texto da frase famosa */
 .quote-box p {
   font-family: var(--font-serif);
   font-size: 1.4rem;
@@ -269,16 +301,9 @@ body {
   line-height: 1.5;
 }
 
-.quote-author {
-  font-family: var(--font-sans);
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  color: var(--accent-color);
-  margin-top: 15px;
-  font-weight: bold;
-}
-
-/* Rodapé */
+/* =========================================
+   RODAPÉ
+   ========================================= */
 .footer-container {
   border-top: 1px solid var(--card-border);
   text-align: center;
@@ -287,28 +312,41 @@ body {
   color: var(--text-muted);
 }
 
-/* Modificadores do Grid para telas grandes */
+/* =========================================
+   MODIFICADORES DO GRID (RESPONSIVIDADE E TAMANHOS)
+   Estes modificadores dizem quantos "quadradinhos" do Grid um card vai ocupar.
+   Só funcionam em telas de computador (maiores que 900px).
+   ========================================= */
 @media (min-width: 901px) {
+  /* Ocupa 2 colunas e 2 linhas (Card Gigante) */
   .bento-large {
     grid-column: span 2;
     grid-row: span 2;
   }
+  /* Ocupa 2 linhas na vertical (Poesia) */
   .bento-tall {
     grid-row: span 2;
   }
+  /* Ocupa 2 colunas na horizontal (Duque de Caxias e Citações) */
   .bento-wide {
     grid-column: span 2;
   }
 }
 
-/* Responsividade */
+/* =========================================
+   TELA DE CELULAR E TABLET (menor que 900px)
+   Adapta o site para ficar em apenas 1 coluna para caber na tela do celular
+   ========================================= */
 @media (max-width: 900px) {
   .sc_rafael_grid_cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Muda as 4 colunas para apenas 1 (One Fraction) */
   }
+
   .bento-quotes {
-    flex-direction: column;
+    flex-direction: column; /* Empilha as citações verticalmente no celular */
   }
+
+  /* Diminui o título grandão para não vazar a tela do celular */
   .modern-header h1 {
     font-size: 3rem;
   }

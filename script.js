@@ -1,50 +1,60 @@
+/* =========================================================================
+   LÓGICA DO MODO CLARO / ESCURO (THEME TOGGLE)
+========================================================================= */
+
+/* 1. Variável para rastrear em qual tema estamos (começa Falso, pois iniciamos no Escuro) */
+let sc_rafael_isClaro = false;
+
 /* 
-  1. DECLARAÇÃO DE VARIÁVEL DE ESTADO 
-  Criamos uma variável global para o navegador lembrar qual é o estado atual da tabela.
-  Ela começa como 'false' porque, quando o site carrega, os itens extras estão escondidos.
+   2. Função que troca as cores ativada pelo botão "Alternar para Modo Claro"
 */
+function sc_rafael_muda_tema() {
+  // Captura o corpo da página (body) e o botão que foi clicado
+  const body = document.body;
+  const btnTema = document.getElementById("btn-tema");
+
+  // Se o tema atual NÃO for claro (ou seja, se for escuro):
+  if (!sc_rafael_isClaro) {
+    // Adiciona a classe "sc_rafael_tema_claro" no <body>
+    // Isso vai forçar o CSS a ler as novas cores e deixar o site claro
+    body.classList.add("sc_rafael_tema_claro");
+
+    // Altera o texto do botão para a pessoa poder voltar para o modo noturno
+    btnTema.innerText = "Alternar para Modo Escuro 🌙";
+
+    // Avisa o sistema que agora estamos no modo claro
+    sc_rafael_isClaro = true;
+  } else {
+    // Se o tema JÁ ERA claro, e o usuário clicou de novo:
+
+    // Remove a classe do claro, o que faz o CSS voltar às variáveis originais (escuro)
+    body.classList.remove("sc_rafael_tema_claro");
+
+    // Volta o texto do botão para o original
+    btnTema.innerText = "Alternar para Modo Claro ☀️";
+
+    // Avisa o sistema que voltamos para o modo escuro
+    sc_rafael_isClaro = false;
+  }
+}
+
+/* =========================================================================
+   LÓGICA DA TABELA DE PESOS E MEDIDAS
+========================================================================= */
+
 let sc_rafael_tabelaExpandida = false;
 
-/*
-  2. A FUNÇÃO PRINCIPAL
-  Essa função é ativada APENAS quando o usuário clica no botão "Ver Tabela Completa" no HTML.
-  Lá no HTML tem um código assim: <button onclick="sc_rafael_muda_tabela()">
-*/
 function sc_rafael_muda_tabela() {
-  // 3. CAPTURANDO ELEMENTOS DO HTML
-  // Pedimos pro Javascript buscar lá na tela os dois elementos que vamos manipular:
-  // - A <div> que guarda as medidas extras (identificada pelo ID 'itens-extras')
-  // - O <button> que foi clicado (identificado pelo ID 'btn-tabela')
   const itensExtras = document.getElementById("itens-extras");
   const btn = document.getElementById("btn-tabela");
 
-  /* 
-    4. A LÓGICA DE DECISÃO (IF / ELSE)
-    Verificamos como a variável de estado está no momento do clique.
-    A exclamação (!) significa "NÃO". Ou seja, se a tabela NÃO estiver expandida (false):
-  */
   if (!sc_rafael_tabelaExpandida) {
-    // Altera o CSS do elemento HTML, mudando o display de 'none' para 'block'. Isso faz a lista aparecer na tela.
     itensExtras.style.display = "block";
-
-    // Troca o texto de dentro do botão para indicar a nova ação disponível para o usuário.
     btn.innerText = "Ocultar Tabela";
-
-    // Avisa o sistema que a tabela agora ESTÁ expandida. No próximo clique, ele vai cair no 'else' abaixo.
     sc_rafael_tabelaExpandida = true;
   } else {
-    /* 
-      5. O CAMINHO INVERSO
-      Se a tabela JÁ estava expandida (true), o código cai aqui.
-    */
-
-    // Muda o CSS novamente para esconder a lista ('none' remove o elemento do fluxo visual)
     itensExtras.style.display = "none";
-
-    // Volta o texto do botão para o formato original
     btn.innerText = "Ver Tabela Completa";
-
-    // Avisa o sistema que a tabela voltou a estar oculta.
     sc_rafael_tabelaExpandida = false;
   }
 }

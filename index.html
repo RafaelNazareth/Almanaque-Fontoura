@@ -1,20 +1,13 @@
 <!doctype html>
-<!-- Define o idioma da página para Português do Brasil, ajudando na acessibilidade e SEO -->
 <html lang="pt-BR">
   <head>
-    <!-- Configuração de caracteres para aceitar acentos (ç, ã, é) corretamente -->
     <meta charset="UTF-8" />
-    <!-- Garante que o site seja responsivo e se adapte à largura da tela (celular, tablet, PC) -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- O título que aparece na aba do navegador -->
     <title>Almanaque Fontoura // Edição Digital</title>
-    <!-- Conecta este arquivo HTML ao arquivo CSS externo para aplicar o visual -->
     <link rel="stylesheet" href="styles.css" />
   </head>
 
-  <!-- A classe no body define o tema de cores principal (Dark Mode Editorial) -->
   <body class="sc_rafael_tema_civil">
-    <!-- CABEÇALHO (HEADER): Funciona como a capa ou o "Masthead" de um jornal antigo -->
     <header class="modern-header">
       <p class="edition-date">SÃO PAULO, 2026 — RESGATE HISTÓRICO</p>
       <h1>Almanaque Biotônico Fontoura 1964</h1>
@@ -22,10 +15,8 @@
         Curiosidades, histórias e memes do século passado no seu feed digital.
       </p>
 
-      <!-- Linha decorativa para separar o título do botão -->
       <div class="header-divider"></div>
 
-      <!-- NOVO: Botão para alternar entre Modo Claro e Escuro -->
       <button
         id="btn-tema"
         class="sc_rafael_btn"
@@ -38,24 +29,19 @@
       <p class="author">Por: Rafael Henrique da Silva Nazareth</p>
     </header>
 
-    <!-- CONTEÚDO PRINCIPAL (MAIN): Onde ficam todos os artigos/cards -->
     <main class="sc_rafael_container">
-      <!-- O Grid (Grade) que organiza os cards no estilo "Bento Box" (blocos assimétricos) -->
       <div class="sc_rafael_grid_cards bento-grid">
-        <!-- CARD 1: Artigo Principal (Ocupa espaço dobrado na tela: bento-large) -->
         <div class="sc_rafael_card bento-large editorial-highlight">
-          <!-- Etiqueta de categoria do artigo -->
           <div class="tag">Mindset & Carreira</div>
           <h3>ESTRATAGEMA DE FORD</h3>
-          <!-- Imagem com a classe 'tall' para ficar mais alta neste card específico -->
+          <!-- CORRIGIDO: Removida a barra inicial -->
           <img
-            src="/imagens/ford.png"
+            src="imagens/ford.png"
             alt="Henry Ford working at his desk"
             class="sc_rafael_img_estilo tall"
           />
           <div class="card-text-part">
             <p>
-              <!-- Drop Cap: Letra gigante no começo do parágrafo (clássico de revistas) -->
               <span class="drop-cap">H</span>enry Ford, o célebre industrial,
               detestava auxiliares que não cumprissem cegamente suas ordens. Era
               conhecido o seu estratagema de chamar freqüentemente um empregado
@@ -75,7 +61,6 @@
           </div>
         </div>
 
-        <!-- CARD 2: Card de tamanho normal (1 coluna) -->
         <div class="sc_rafael_card">
           <div class="tag">Alerta Climático</div>
           <p>
@@ -83,14 +68,14 @@
             gases, que cobriu Londres durante vários dias em fins de 1962,
             causou prejuízos avaliados em 13 bilhões de cruzeiros.
           </p>
+          <!-- CORRIGIDO -->
           <img
-            src="/imagens/londres.png"
+            src="imagens/londres.png"
             alt="Neblina de smog cobrindo Londres com o Big Ben ao fundo"
             class="sc_rafael_img_estilo"
           />
         </div>
 
-        <!-- CARD 3: Card de Piada/Humor sem imagem -->
         <div class="sc_rafael_card">
           <div class="tag">Stonks</div>
           <h3>MARÉ BAIXA</h3>
@@ -103,12 +88,12 @@
           <p>— Compro! — retruca imediatamente o outro.</p>
         </div>
 
-        <!-- CARD 4 -->
         <div class="sc_rafael_card">
           <div class="tag">Hot Take</div>
           <h3>O PIOR LIVRO DO MUNDO</h3>
+          <!-- CORRIGIDO -->
           <img
-            src="/imagens/dante.png"
+            src="imagens/dante.png"
             alt="Capa do livro O Inferno de Dante"
             class="sc_rafael_img_estilo"
           />
@@ -120,11 +105,9 @@
           </p>
         </div>
 
-        <!-- CARD 5: Card de Poesia (bento-tall = ocupa duas linhas de altura no grid) -->
         <div class="sc_rafael_card bento-tall editorial-poem">
           <div class="tag">Poesia</div>
           <h3>ÚLTIMA CONFIDÊNCIA</h3>
-          <!-- Uso da tag <br> para quebrar as linhas exatamente como em um poema -->
           <p>
             — E, se acaso voltar, que hei de dizer-lhe, [quando<br />
             Me perguntar por ti ?<br />
@@ -143,17 +126,15 @@
             É tão fácil a morte... Ai, seria tão doce<br />
             Ser amada... e morrer !...<br />
           </p>
-          <!-- Classe específica para alinhar o nome do autor do poema à direita -->
           <p class="author-quote">— Vicente de Carvalho</p>
         </div>
 
-        <!-- CARD 6: Card Largo (bento-wide = ocupa duas colunas de largura) -->
         <div class="sc_rafael_card bento-wide">
           <div class="tag">História BR</div>
           <h3>SUPERIORIDADE DE CAXIAS</h3>
-          <!-- Imagem com classe 'wide' para se adaptar à largura do card grande -->
+          <!-- CORRIGIDO -->
           <img
-            src="/imagens/duquedecaxias.png"
+            src="imagens/duquedecaxias.png"
             alt="Retrato do Duque de Caxias"
             class="sc_rafael_img_estilo wide"
           />
@@ -169,7 +150,6 @@
           </p>
         </div>
 
-        <!-- CARD 7 -->
         <div class="sc_rafael_card">
           <div class="tag">Bizarro</div>
           <h3>GUERRA AO PARDAL</h3>
@@ -182,17 +162,14 @@
           </p>
         </div>
 
-        <!-- CARD 8: Infográfico Interativo (Este card tem Javascript associado) -->
         <div class="sc_rafael_card card-infografico">
           <div class="tag">Info</div>
           <h3>PESOS E MEDIDAS DO BRASIL</h3>
           <ul class="modern-list">
-            <!-- Itens visíveis por padrão -->
             <li><span>Arrôba</span> <span>14,689 kg</span></li>
             <li><span>Quintal</span> <span>58,328 ,,</span></li>
             <li><span>Palmo</span> <span>22 cm</span></li>
 
-            <!-- Bloco de itens oculto inicialmente via CSS inline (style="display: none") -->
             <div id="itens-extras" style="display: none">
               <li><span>Alq. paulista</span> <span>24.200 m²</span></li>
               <li><span>Alq. mineiro</span> <span>48.400 ,,</span></li>
@@ -201,7 +178,6 @@
               <li><span>Légua marítima</span> <span>5.555 ,,</span></li>
             </div>
           </ul>
-          <!-- Botão que dispara a função Javascript 'sc_rafael_muda_tabela()' -->
           <button
             id="btn-tabela"
             class="sc_rafael_btn"
@@ -211,11 +187,11 @@
           </button>
         </div>
 
-        <!-- CARD 9 -->
         <div class="sc_rafael_card">
           <div class="tag">Tirinha</div>
+          <!-- CORRIGIDO -->
           <img
-            src="/imagens/meme.png"
+            src="imagens/meme.png"
             alt="Charge moderna do meme da Lidia"
             class="sc_rafael_img_estilo"
           />
@@ -223,7 +199,6 @@
           <p>— Vinte e oito... Pelo menos é o que há muito tempo ouço dizer.</p>
         </div>
 
-        <!-- CARD 10 -->
         <div class="sc_rafael_card">
           <div class="tag">Curiosidade</div>
           <p>
@@ -234,7 +209,6 @@
           </p>
         </div>
 
-        <!-- CARD 11: Citações (Largo) -->
         <div class="sc_rafael_card bento-wide bento-quotes">
           <div class="quote-box">
             <p>
@@ -256,13 +230,11 @@
       </div>
     </main>
 
-    <!-- RODAPÉ (FOOTER): Fim da página -->
     <footer class="footer-container">
       <p>Projeto Acadêmico - Design Editorial Digital</p>
       <p>&copy; 2026 - Rafael Henrique da Silva Nazareth</p>
     </footer>
 
-    <!-- Link para o arquivo Javascript (sempre colocado no final do body para não travar o carregamento da página) -->
     <script src="script.js"></script>
   </body>
 </html>

@@ -1,63 +1,63 @@
 /* =========================================
-   VARIÁVEIS - ESTILO REVISTA DIGITAL DARK (Padrão)
-   Isso permite mudar as cores do site inteiro mudando apenas estas linhas.
+   variaveis globais do tema escuro (o padrao). 
+   se vc mudar a cor aqui, ela muda no site inteirinho de uma vez.
    ========================================= */
 :root {
-  --bg-color: #0f0f0f; /* Cor do fundo da página (quase preto) */
-  --card-bg: #1a1a1a; /* Cor de fundo dos cards (cinza muito escuro) */
-  --card-border: #333333; /* Cor das bordas e linhas separadoras */
-  --text-main: #e0e0e0; /* Cor do texto principal */
-  --text-muted: #999999; /* Cor de textos secundários, legendas e tags */
-  --accent-color: #d90429; /* Vermelho clássico editorial */
+  --bg-color: #0f0f0f; /* fundo geral da pagina q é bem escurao */
+  --card-bg: #1a1a1a; /* fundo dos cards um pouco mais claro q o fundo da pagina */
+  --card-border: #333333; /* cor das linhas q separam as coisas */
+  --text-main: #e0e0e0; /* cor dos textos normais */
+  --text-muted: #999999; /* cor dos textos menos importantes, tipo cinza */
+  --accent-color: #d90429; /* vermelhão de destaque q lembra a marca */
 
-  /* Fontes */
+  /* fontes: com serifa (georgia) pros titulos ficarem chiques e sem serifa (inter) pros textos normais */
   --font-serif: "Georgia", "Times New Roman", serif;
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* =========================================
-   NOVO: VARIÁVEIS DO TEMA CLARO (LIGHT MODE)
-   Quando o JS coloca a classe "sc_rafael_tema_claro" no body, ele lê essas 
-   cores no lugar das que estão no :root, mudando o visual da página toda instantaneamente!
+   variaveis do modo claro q o javascript ativa.
+   qnd a classe sc_rafael_tema_claro entra no body, essas cores atropelam as cores ali de cima.
    ========================================= */
 body.sc_rafael_tema_claro {
-  --bg-color: #f4f1ea; /* Papel de jornal antigo / off-white */
-  --card-bg: #ffffff; /* Fundo branco puro para os cards */
-  --card-border: #cccccc; /* Linhas divisórias mais suaves (cinza claro) */
-  --text-main: #111111; /* Texto bem escuro para leitura clara */
-  --text-muted: #555555; /* Texto secundário cinza médio */
-  --accent-color: #8b0000; /* Vermelho Biotônico um pouco mais escuro para contraste */
+  --bg-color: #f4f1ea; /* fundo bege tipo papel velho */
+  --card-bg: #ffffff; /* cards ficam brancos */
+  --card-border: #cccccc; /* linhas ficam cinza clarinho */
+  --text-main: #111111; /* textos ficam qse pretos pra ler de boa no fundo claro */
+  --text-muted: #555555; /* cinza mais escuro pras legendas */
+  --accent-color: #8b0000; /* vermelho mais fechado */
 }
 
 /* =========================================
-   RESET GERAL
+   zera as margens q o navegador bota de intruso 
    ========================================= */
 * {
-  box-sizing: border-box;
+  box-sizing: border-box; /* faz borda e padding nao aumentarem o tamanho do quadrado */
   margin: 0;
   padding: 0;
 }
 
+/* bota a fonte normal no site todo */
 body {
   font-family: var(--font-sans);
 }
 
 /* =========================================
-   ESTRUTURAS PRINCIPAIS
+   estruturas gerais 
    ========================================= */
-
 .sc_rafael_tema_civil {
   background-color: var(--bg-color);
   color: var(--text-main);
-  min-height: 100vh;
-  line-height: 1.7;
+  min-height: 100vh; /* faz o body sempre ter pelo menos a altura inteira da tela */
+  line-height: 1.7; /* espaço entre as linhas de texto pra nao ficar embolado */
 
-  /* NOVO: Faz com que a mudança de tema (claro/escuro) seja suave e demore 0.5s */
+  /* transition faz a mudança de cor do tema escuro pro claro ficar suave (demora 0.5 seg) */
   transition:
     background-color 0.5s ease,
     color 0.5s ease;
 }
 
+/* centraliza o conteudo na tela e poe largura maxima */
 .sc_rafael_container {
   max-width: 1200px;
   margin: 0 auto;
@@ -65,38 +65,42 @@ body {
 }
 
 /* =========================================
-   SISTEMA DE GRID E CARDS
+   grid do bento layout (os blocos da noticia)
    ========================================= */
 .sc_rafael_grid_cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: minmax(180px, auto);
-  gap: 30px;
+  display: grid; /* avisa q vamos usar grid */
+  grid-template-columns: repeat(4, 1fr); /* cria 4 colunas divididas iguais */
+  grid-auto-rows: minmax(180px, auto); /* altura dos blocos */
+  gap: 30px; /* espaço entre os cards */
 }
 
+/* estilo de cada noticia (card) */
 .sc_rafael_card {
   background: var(--card-bg);
-  border-top: 4px solid var(--card-border);
+  border-top: 4px solid var(--card-border); /* aquela barra grossa la em cima do card */
   padding: 24px 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  display: flex; /* flexbox pra arrumar as coisas dentro do card */
+  flex-direction: column; /* bota as coisas uma embaixo da outra */
+  gap: 16px; /* espaço entre texto e imagem no card */
 
-  /* NOVO: A cor de fundo do card também vai mudar suavemente na troca de tema */
+  /* animacao de transiçao de cores do card */
   transition:
     background-color 0.5s ease,
     border-color 0.3s ease;
 }
 
+/* muda a cor da borda de cima qnd poe o mouse */
 .sc_rafael_card:hover {
   border-top-color: var(--accent-color);
 }
 
+/* titulos dos cards */
 .sc_rafael_card h3 {
   font-family: var(--font-serif);
   font-size: 1.5rem;
-  /* Mudei de #ffffff fixo para a variável de texto, assim ele troca no tema claro */
-  color: var(--text-main);
+  color: var(
+    --text-main
+  ); /* usa a variavel pra mudar de cor qnd trocar de tema */
   font-weight: normal;
   letter-spacing: 0.5px;
   text-transform: uppercase;
@@ -110,25 +114,25 @@ body {
 }
 
 .sc_rafael_card strong {
-  /* Mudei de fixo para variável para suportar o modo claro */
   color: var(--text-main);
   font-weight: 600;
 }
 
 /* =========================================
-   ESTILIZAÇÃO DE IMAGENS
+   imagens 
    ========================================= */
 .sc_rafael_img_estilo {
-  width: 100%;
+  width: 100%; /* imagem pega a largura toda do card */
   height: auto;
-  object-fit: cover;
+  object-fit: cover; /* nao deixa a foto esticada e deformada */
   object-position: center;
   display: block;
   margin: 10px 0;
-  filter: grayscale(20%);
+  filter: grayscale(20%); /* deixa a foto 20% preto e branco */
   transition: filter 0.3s ease;
 }
 
+/* qnd passa o mouse, tira o filtro e a foto fica coloridona */
 .sc_rafael_img_estilo:hover {
   filter: grayscale(0%);
 }
@@ -138,10 +142,10 @@ body {
 }
 
 /* =========================================
-   BOTÕES E ELEMENTOS INTERATIVOS
+   botoes
    ========================================= */
 .sc_rafael_btn {
-  margin-top: auto;
+  margin-top: auto; /* joga o botao pro fim do card */
   padding: 10px 15px;
   background: transparent;
   color: var(--text-main);
@@ -150,10 +154,11 @@ body {
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  cursor: pointer;
+  cursor: pointer; /* deixa o mouse com a mao de clicar */
   transition: all 0.2s ease;
 }
 
+/* inverte a cor do botao qnd passa o mouse nele */
 .sc_rafael_btn:hover {
   background: var(--text-main);
   color: var(--bg-color);
@@ -161,14 +166,13 @@ body {
 }
 
 /* =========================================
-   ESTILOS ESPECÍFICOS DE REVISTA
+   estilos q dao cara de revista
    ========================================= */
 .modern-header {
   text-align: center;
   padding: 50px 20px 30px;
   border-bottom: 2px solid var(--card-border);
   margin-bottom: 40px;
-  /* Transição na borda durante a troca de tema */
   transition: border-color 0.5s ease;
 }
 
@@ -186,7 +190,7 @@ body {
   font-size: 4.5rem;
   font-weight: normal;
   letter-spacing: -2px;
-  color: var(--text-main); /* Adaptável ao modo claro */
+  color: var(--text-main);
   line-height: 1;
   margin-bottom: 15px;
 }
@@ -194,7 +198,7 @@ body {
 .subtitle {
   font-size: 1.2rem;
   font-family: var(--font-serif);
-  font-style: italic;
+  font-style: italic; /* deixa itálico igual citação */
   color: var(--text-muted);
   max-width: 600px;
   margin: 0 auto;
@@ -204,7 +208,7 @@ body {
   width: 100px;
   height: 2px;
   background-color: var(--accent-color);
-  margin: 20px auto;
+  margin: 20px auto; /* centraliza a linha e da espaço nela */
 }
 
 .tag {
@@ -220,14 +224,15 @@ body {
   margin-bottom: 10px;
 }
 
+/* a letra maiuscula grandona no inicio do texto */
 .drop-cap {
-  float: left;
+  float: left; /* o texto fica contornando ela */
   font-family: var(--font-serif);
   font-size: 4.5rem;
   line-height: 0.8;
   padding-top: 4px;
   padding-right: 8px;
-  color: var(--text-main); /* Adaptável ao modo claro */
+  color: var(--text-main);
 }
 
 .editorial-poem p {
@@ -245,10 +250,10 @@ body {
 }
 
 /* =========================================
-   INFOGRÁFICO DE LISTAS E CITAÇÕES
+   infograficos e citaçoes 
    ========================================= */
 .card-infografico .modern-list {
-  list-style: none;
+  list-style: none; /* tira as bolinhas chatas da lista html */
   padding: 0;
   margin: 15px 0;
   border-top: 1px solid var(--card-border);
@@ -256,28 +261,28 @@ body {
 
 .card-infografico li {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* joga o nome de um lado e numero do outro */
   padding: 8px 0;
   border-bottom: 1px solid var(--card-border);
-  font-family: monospace;
+  font-family: monospace; /* letra de codigo/maquina de escrever */
   font-size: 0.95rem;
   color: var(--text-muted);
 }
 
 .card-infografico li span:first-child {
-  color: var(--text-main); /* Adaptável ao modo claro */
+  color: var(--text-main);
 }
 
 .bento-quotes {
   display: flex;
-  flex-direction: row;
+  flex-direction: row; /* bota as citaçoes lado a lado */
   gap: 30px;
   background-color: transparent;
   border-top: 4px solid var(--accent-color);
 }
 
 .quote-box {
-  flex: 1;
+  flex: 1; /* os dois dividem a tela em 50% igualzinho */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -287,12 +292,12 @@ body {
   font-family: var(--font-serif);
   font-size: 1.4rem;
   font-style: italic;
-  color: var(--text-main); /* Adaptável ao modo claro */
+  color: var(--text-main);
   line-height: 1.5;
 }
 
 /* =========================================
-   RODAPÉ
+   rodape 
    ========================================= */
 .footer-container {
   border-top: 1px solid var(--card-border);
@@ -303,8 +308,10 @@ body {
 }
 
 /* =========================================
-   MODIFICADORES DO GRID E RESPONSIVIDADE
+   ajustes de tela pra pc grande, tablet e celular
    ========================================= */
+
+/* se a tela for maior q 900px (pc), esses cards ficam maiores q os outros */
 @media (min-width: 901px) {
   .bento-large {
     grid-column: span 2;
@@ -318,14 +325,15 @@ body {
   }
 }
 
+/* se a tela for celular/tablet (menos q 900px) */
 @media (max-width: 900px) {
   .sc_rafael_grid_cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* destroi as 4 colunas e vira uma so pro site não quebrar no cel */
   }
   .bento-quotes {
-    flex-direction: column;
+    flex-direction: column; /* empilha as citaçoes em vez de ficar do lado da outra */
   }
   .modern-header h1 {
-    font-size: 3rem;
+    font-size: 3rem; /* diminui a fonte do titulo pra caber */
   }
 }

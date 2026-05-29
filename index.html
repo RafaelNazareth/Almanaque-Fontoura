@@ -1,13 +1,20 @@
 <!doctype html>
+<!-- diz pro navegador q o site ta em portugues, ajuda no google -->
 <html lang="pt-BR">
   <head>
+    <!-- arruma os acentos tipo ç, ã, é pra nao bugar na tela -->
     <meta charset="UTF-8" />
+    <!-- faz o site se adaptar no celular e nao ficar gigante -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- o titulo q fica la em cima na aba do navegador -->
     <title>Almanaque Fontoura // Edição Digital</title>
+    <!-- puxa o arquivo css pra dar o visual pro site -->
     <link rel="stylesheet" href="styles.css" />
   </head>
 
+  <!-- body é o corpo do site. essa classe civil puxa as cores do tema escuro padrao -->
   <body class="sc_rafael_tema_civil">
+    <!-- header é o cabeçalho, a primeira coisa q aparece -->
     <header class="modern-header">
       <p class="edition-date">SÃO PAULO, 2026 — RESGATE HISTÓRICO</p>
       <h1>Almanaque Biotônico Fontoura 1964</h1>
@@ -15,8 +22,10 @@
         Curiosidades, histórias e memes do século passado no seu feed digital.
       </p>
 
+      <!-- uma linhazinha vermelha so pra enfeitar e separar as coisas -->
       <div class="header-divider"></div>
 
+      <!-- botao q chama a funçao no javascript pra trocar do claro pro escuro -->
       <button
         id="btn-tema"
         class="sc_rafael_btn"
@@ -29,12 +38,15 @@
       <p class="author">Por: Rafael Henrique da Silva Nazareth</p>
     </header>
 
+    <!-- main é o conteudo principal, onde ficam todas as noticias -->
     <main class="sc_rafael_container">
+      <!-- essa div cria a grade (grid) q organiza os cards lado a lado -->
       <div class="sc_rafael_grid_cards bento-grid">
+        <!-- card grande q ocupa 2 espaços na tela -->
         <div class="sc_rafael_card bento-large editorial-highlight">
           <div class="tag">Mindset & Carreira</div>
           <h3>ESTRATAGEMA DE FORD</h3>
-          <!-- CORRIGIDO: Removida a barra inicial -->
+          <!-- imagem com a classe tall pra ficar mais altinha e caber melhor -->
           <img
             src="imagens/ford.png"
             alt="Henry Ford working at his desk"
@@ -42,6 +54,7 @@
           />
           <div class="card-text-part">
             <p>
+              <!-- drop-cap faz aquela primeira letra gigante igual de revista antiga -->
               <span class="drop-cap">H</span>enry Ford, o célebre industrial,
               detestava auxiliares que não cumprissem cegamente suas ordens. Era
               conhecido o seu estratagema de chamar freqüentemente um empregado
@@ -61,6 +74,7 @@
           </div>
         </div>
 
+        <!-- card normalzinho de 1 espaço so -->
         <div class="sc_rafael_card">
           <div class="tag">Alerta Climático</div>
           <p>
@@ -68,7 +82,6 @@
             gases, que cobriu Londres durante vários dias em fins de 1962,
             causou prejuízos avaliados em 13 bilhões de cruzeiros.
           </p>
-          <!-- CORRIGIDO -->
           <img
             src="imagens/londres.png"
             alt="Neblina de smog cobrindo Londres com o Big Ben ao fundo"
@@ -91,7 +104,6 @@
         <div class="sc_rafael_card">
           <div class="tag">Hot Take</div>
           <h3>O PIOR LIVRO DO MUNDO</h3>
-          <!-- CORRIGIDO -->
           <img
             src="imagens/dante.png"
             alt="Capa do livro O Inferno de Dante"
@@ -105,10 +117,12 @@
           </p>
         </div>
 
+        <!-- bento-tall faz o card ocupar 2 espaços na vertical (pra baixo) -->
         <div class="sc_rafael_card bento-tall editorial-poem">
           <div class="tag">Poesia</div>
           <h3>ÚLTIMA CONFIDÊNCIA</h3>
           <p>
+            <!-- as tags br servem pra quebrar a linha igual no poema -->
             — E, se acaso voltar, que hei de dizer-lhe, [quando<br />
             Me perguntar por ti ?<br />
             — Dize-lhe que me viste, uma tarde, [chorando...<br />
@@ -126,13 +140,15 @@
             É tão fácil a morte... Ai, seria tão doce<br />
             Ser amada... e morrer !...<br />
           </p>
+          <!-- author-quote joga o nome do cara la pro canto direito -->
           <p class="author-quote">— Vicente de Carvalho</p>
         </div>
 
+        <!-- bento-wide faz o card ocupar 2 espaços na horizontal (pros lados) -->
         <div class="sc_rafael_card bento-wide">
           <div class="tag">História BR</div>
           <h3>SUPERIORIDADE DE CAXIAS</h3>
-          <!-- CORRIGIDO -->
+          <!-- wide na imagem faz ela espalhar bem nesse card q é mais largo -->
           <img
             src="imagens/duquedecaxias.png"
             alt="Retrato do Duque de Caxias"
@@ -162,14 +178,17 @@
           </p>
         </div>
 
+        <!-- card da tabela q tem javascript funcionando nele -->
         <div class="sc_rafael_card card-infografico">
           <div class="tag">Info</div>
           <h3>PESOS E MEDIDAS DO BRASIL</h3>
           <ul class="modern-list">
+            <!-- esses 3 li aparecem de cara na pagina -->
             <li><span>Arrôba</span> <span>14,689 kg</span></li>
             <li><span>Quintal</span> <span>58,328 ,,</span></li>
             <li><span>Palmo</span> <span>22 cm</span></li>
 
+            <!-- essa div começa escondida (display: none). o javascript q faz ela aparecer -->
             <div id="itens-extras" style="display: none">
               <li><span>Alq. paulista</span> <span>24.200 m²</span></li>
               <li><span>Alq. mineiro</span> <span>48.400 ,,</span></li>
@@ -178,6 +197,7 @@
               <li><span>Légua marítima</span> <span>5.555 ,,</span></li>
             </div>
           </ul>
+          <!-- qnd clica no botao, ele chama a funçao sc_rafael_muda_tabela la no js -->
           <button
             id="btn-tabela"
             class="sc_rafael_btn"
@@ -189,7 +209,6 @@
 
         <div class="sc_rafael_card">
           <div class="tag">Tirinha</div>
-          <!-- CORRIGIDO -->
           <img
             src="imagens/meme.png"
             alt="Charge moderna do meme da Lidia"
@@ -230,11 +249,13 @@
       </div>
     </main>
 
+    <!-- rodape do site q fica la no finzinho -->
     <footer class="footer-container">
       <p>Projeto Acadêmico - Design Editorial Digital</p>
       <p>&copy; 2026 - Rafael Henrique da Silva Nazareth</p>
     </footer>
 
+    <!-- carrega o arquivo de javascript. fica no final pra nao deixar o site lento carregando -->
     <script src="script.js"></script>
   </body>
 </html>

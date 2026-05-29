@@ -1,58 +1,61 @@
 /* =========================================================================
-   LÓGICA DO MODO CLARO / ESCURO (THEME TOGGLE)
+   tema escuro x tema claro
 ========================================================================= */
 
-/* 1. Variável para rastrear em qual tema estamos (começa Falso, pois iniciamos no Escuro) */
+/* variavel q guarda a info do tema. começa false pq o site liga no escuro */
 let sc_rafael_isClaro = false;
 
-/* 
-   2. Função que troca as cores ativada pelo botão "Alternar para Modo Claro"
-*/
+/* funçao q roda sempre q a gnt aperta la no botao "alternar pra modo claro" */
 function sc_rafael_muda_tema() {
-  // Captura o corpo da página (body) e o botão que foi clicado
+  // acha o elemento body e o botao no html pra gnt poder mexer neles
   const body = document.body;
   const btnTema = document.getElementById("btn-tema");
 
-  // Se o tema atual NÃO for claro (ou seja, se for escuro):
+  // se o tema NÃO (!) ta claro, ou seja, ta escuro, a gnt roda isso aqui:
   if (!sc_rafael_isClaro) {
-    // Adiciona a classe "sc_rafael_tema_claro" no <body>
-    // Isso vai forçar o CSS a ler as novas cores e deixar o site claro
+    // bota a classe sc_rafael_tema_claro la no body, ai o css q fiz puxa as variaveis claras e o site fica branco
     body.classList.add("sc_rafael_tema_claro");
 
-    // Altera o texto do botão para a pessoa poder voltar para o modo noturno
+    // muda o texto do botao pras pessoas saberem q da pra voltar
     btnTema.innerText = "Alternar para Modo Escuro 🌙";
 
-    // Avisa o sistema que agora estamos no modo claro
+    // muda a variavel pra true, pq agr tamo no modo claro mesmo
     sc_rafael_isClaro = true;
   } else {
-    // Se o tema JÁ ERA claro, e o usuário clicou de novo:
+    // se o isClaro ja tava true (alguem quer voltar pro escuro)
 
-    // Remove a classe do claro, o que faz o CSS voltar às variáveis originais (escuro)
+    // remove a classe do claro, ai o site cai dnv nas cores padrao (escuro)
     body.classList.remove("sc_rafael_tema_claro");
 
-    // Volta o texto do botão para o original
+    // volta o texto do botao pra claro de novo
     btnTema.innerText = "Alternar para Modo Claro ☀️";
 
-    // Avisa o sistema que voltamos para o modo escuro
+    // atualiza falando q o modo claro acabo
     sc_rafael_isClaro = false;
   }
 }
 
 /* =========================================================================
-   LÓGICA DA TABELA DE PESOS E MEDIDAS
+   logica da tabela de pesos q abre e fecha
 ========================================================================= */
 
+// mesma logica do tema. começa false pq as medidas extras estao escondidas
 let sc_rafael_tabelaExpandida = false;
 
+// funçao de qnd clica no "ver tabela completa"
 function sc_rafael_muda_tabela() {
+  // pega a div escondida e o botao la da seção de infografico
   const itensExtras = document.getElementById("itens-extras");
   const btn = document.getElementById("btn-tabela");
 
+  // se nao ta expandida...
   if (!sc_rafael_tabelaExpandida) {
+    // display block faz o item voltar a aparecer e ocupar o espaço na tela
     itensExtras.style.display = "block";
     btn.innerText = "Ocultar Tabela";
     sc_rafael_tabelaExpandida = true;
   } else {
+    // se clicar dnv, display none some com o bagulho da tela
     itensExtras.style.display = "none";
     btn.innerText = "Ver Tabela Completa";
     sc_rafael_tabelaExpandida = false;
